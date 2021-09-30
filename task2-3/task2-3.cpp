@@ -5,6 +5,7 @@
 using namespace std;
 float x1, x2, a, b, c, D;
 float xx1, xx2;
+float p, n;
 
 
 void task1(float b, float c, float* x1, float* x2)
@@ -26,6 +27,25 @@ void task2(float a, float b, float c, float* x1, float* x2)
 		cout << "Error, Ignore variable values";
 		//return void();
 	}
+}
+
+int task3(float n)
+{
+	if (n > 0)
+	{
+		for (int i = 0; i < 16; i += 3)
+		{
+			p += 5;
+		}
+	}
+	else
+	{
+		for (int j = 50; j > 0; j -= 4)
+		{
+			p -= 4;
+		}
+	}
+	return p;
 }
 
 
@@ -54,6 +74,12 @@ int main()
 		cin >> c;
 		task2(a, b, c, &xx1, &xx2);
 		cout << " X1:" << xx1 << "; X2:" << xx2;
+	}
+	case 3:
+	{
+		cout << "N:";
+		cin >> n;
+		cout << task3(n);
 	}
 	}
 

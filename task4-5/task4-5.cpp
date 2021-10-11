@@ -36,11 +36,11 @@ int main()
 	n = sizeof(array1) / sizeof(int);
 	for (int i = 0; i < n - 1; i++)
 		for (int j = 0; j < n - i - 1; j++)
-			if (array1[i] > array1[i + 1])
+			if (array1[j] > array1[j + 1])
 			{
-				buf = array1[i];
-				array1[i] = array1[i + 1];
-				array1[i + 1] = buf;
+				buf = array1[j];
+				array1[j] = array1[j + 1];
+				array1[j + 1] = buf;
 			}
 
 	for (int i = 0; i < n; i++)//тестовый вывод

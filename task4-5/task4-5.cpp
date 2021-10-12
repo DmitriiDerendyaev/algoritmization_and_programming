@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int i, j, buf1 = 0, buf2 = 0, array1[] = { 7,5,4,6,1,2,3 }, array2[] = {8,7,5,1,9,4};
+int i, j, buf1 = 0, buf2 = 0, array1[] = { 7,5,4,6,1,2,3 }, array2[] = {8,7,5,1,9,4,81,1004,158};
 int n1 = sizeof(array1) / sizeof(int);
 int n2 = sizeof(array2) / sizeof(int);
 
@@ -43,11 +43,12 @@ void task_while(int array2[])
 			if (array2[j] > array2[j + 1])
 			{
 				buf2 = array2[j];
-				array2[i] = array2[j + 1];
+				array2[j] = array2[j + 1];
 				array2[j + 1] = buf2;
 			}
 			j++;
 		}
+		j = 0;
 		i++;
 	}
 

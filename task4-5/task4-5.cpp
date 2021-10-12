@@ -2,8 +2,8 @@
 
 using namespace std;
 
-int i, j, n, buf, array1[] = {7,5,4,6,1,2,3};
-
+int i, j, buf, array1[] = {7,5,4,6,1,2,3};
+int n = sizeof(array1) / sizeof(int);
 //void printing(int array1[])
 //{
 //	for (int i = 0; i < sizeof(array1); i++)
@@ -15,9 +15,8 @@ void task_for(int array1[])
 {
 	//int i, j, n, buf, array1[] = { 7,5,4,6,1,2,3 };
 
-	n = sizeof(array1) / sizeof(int);
 	for (int i = 0; i < n - 1; i++)
-		for (int j = 0; j < n - i - 1; j++)
+		for (int j = 0; j < n - i - 1; j++)//delet i!!!!!!!!!!!!!!
 			if (array1[j] > array1[j + 1])
 			{
 				buf = array1[j];
@@ -32,9 +31,8 @@ void task_for(int array1[])
 
 int main()
 {
-	//for (int i = 0; i < n; i++)//тестовый вывод
-	//	cout << array1[i] << ".";
+
 	task_for(array1);
-	cout << "Do you exist?";
+	//cout << "Do you exist?";
 	return 0;
 }

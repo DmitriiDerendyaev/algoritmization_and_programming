@@ -5,13 +5,14 @@
 using namespace std;
 
 vector<int> vec1;
-int el, n;
+int n;
 float k = 1.247;
 
 
 void reading(void)
 {
 //again:
+	int el;
 	while (cin >> el)
 	{
 		vec1.push_back(el);
@@ -69,8 +70,11 @@ int main()
 {
 	cout << "Curren array sorted by for:" << endl;
 	sort_for();
+
 	vec1.clear();
+
 	cout << "Curren array sorted by while:" << endl;
 	sort_while();
+
 	return 0;
 }

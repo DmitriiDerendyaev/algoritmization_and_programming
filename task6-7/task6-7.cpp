@@ -33,49 +33,49 @@ void printing(void)//инициализация функции печати/вывода элементов на экран
 void sort_for(void)//инициализация функции сортировки массива с помощью цикла for
 {
 	cout << "When finished typing, press CTRL + Z or enter 0 to contine next task:" << endl;//предупреждение
-	reading();
-	n = vec1.size();
-	for (int step = n - 1; step >= 1; step /= k)
+	reading();//вызов функции записи вектора
+	n = vec1.size();//определение размера массива
+	for (int step = n - 1; step >= 1; step /= k)//инициализация цикла, который выполняется пока шаг больше 1, при уменьшении шага на коэфф К
 	{
 		for (int i = 0; i < n - step; i++)
 		{
-			if (vec1[i] > vec1[i + step])
-				swap(vec1[i], vec1[i + step]);
+			if (vec1[i] > vec1[i + step])//если первый элемент больше элемента +step произвести обмен
+				swap(vec1[i], vec1[i + step]);//выполнение перемещения элементов вектора по индексам, заданным в условии
 		}
 	}
-	printing();
+	printing();//вывод вектор на экран, использую подпрограмму
 }
 
-void sort_while(void)
+void sort_while(void)//инициализация функции сортировки массива с помощью цикла while
 {
-	cout << "When finished typing, press CTRL + Z:" << endl;
-	reading();
-	n = vec1.size();
-	int step = n - 1;
-	while(step >= 1)
+	cout << "When finished typing, press CTRL + Z:" << endl;//предупреждение
+	reading();//вызов функции записи вектора
+	n = vec1.size();//определение размера массива
+	int step = n - 1;//инициализация первого шага(крайняя точка массива)
+	while(step >= 1)//инициализация внешнего цикла while до момента, пока step больше 1
 	{
-		int i = 0;
-		while (i < n - step)
+		int i = 0;//инициализация счетчика внутреннего цикла
+		while (i < n - step)//внутренний цикл выполнет функцию прохода от начала вектора до конца(в последствии размер массива - шаг)
 		{
-			if (vec1[i] > vec1[i + step])
-				swap(vec1[i], vec1[i + step]);
+			if (vec1[i] > vec1[i + step])//если первый элемент больше элемента +step произвести обмен
+				swap(vec1[i], vec1[i + step]);//выполнение перемещения элементов вектора по индексам, заданным в условии
 			i++;
 		}
-		step /= k;
+		step /= k;//уменьшение шага
 		
 	}
-	printing();
+	printing();//вывод вектор на экран, использую подпрограмму
 }
 
-int main()
+int main()//начало основной программы
 {
-	cout << "Curren array sorted by for:" << endl;
-	sort_for();
+	cout << "Curren array sorted by for:" << endl;//предупреждение
+	sort_for();//вызов подпрограммы сортировки вектора/массива с помощью цикла for
 
 	vec1.clear();
 
-	cout << "Curren array sorted by while:" << endl;
-	sort_while();
+	cout << "Curren array sorted by while:" << endl;//предупреждение
+	sort_while(); // вызов подпрограммы сортировки вектора / массива с помощью цикла while
 
-	return 0;
+	return 0;// завершение программы
 }

@@ -13,10 +13,10 @@ void reading(void)
 {
 //again:
 	int el;
-	while (cin >> el)
+	do
 	{
 		vec1.push_back(el);
-	}
+	} while (cin >> el and el != 0);
 }
 
 void printing(void)
@@ -48,7 +48,6 @@ void sort_while(void)
 {
 	cout << "When finished typing, press CTRL + Z:" << endl;
 	reading();
-	//goto again;
 	n = vec1.size();
 	int step = n - 1;
 	while(step >= 1)

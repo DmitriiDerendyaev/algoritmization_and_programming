@@ -1,76 +1,80 @@
-#include <iostream>
+#include <iostream>//подкючение необходимых библиотек
 #include <vector>
 #include <algorithm>
 
-using namespace std;
+using namespace std;//определение пространства имен
 
-int el, buf, i, j;
-vector<int> vec;
+int el, buf, i, j;//объявление переменных, участвующих в обработке массива
+vector<int> vec;//объяление ветора(массива)
 
-void reading(void)
+void reading(void)//инициализации функции заполнения вектора(с клавиатуры)
 {
-	while (cin >> el)
+	while (cin >> el)//начало цикла while и работа его до тех пор, пока вводятся значения с клавиатуры(Stop: Ctrl+Z) - НЕ РЕКОМЕНДУЕТСЯ
 	{
-		if (el == 0)
-			break;
+		if (el == 0)//конец строки для опеределенной задачи по символу 0
+			break;//если был нажат 0, то выход из подпрограммы записи вектора
 		else
-			vec.push_back(el);
+			vec.push_back(el);//внесение очередного элемента в конец вектора
 		
 	}
 }
 
-void printing(void)
+void printing(void)//инициализация функции печати/вывода элементов на экран
 {
 	cout << vec[0];
-	for (int i = 1; i < vec.size(); i++)
+	for (int i = 1; i < vec.size(); i++)//цикл вывода элементов на экран с индексом от начала до конца вектора(по размеру массива)
 	{
-		cout << ", " << vec[i];
+		cout << ", " << vec[i];//печать значения
 	}
-	cout << endl;
+	cout << endl;//перенос строки
 }
 
-void sort_while(void)
+void sort_while(void)//инициализация функции сортировки массива с помощью цикла while
 {
-	cout << "Sorting array by 'while':" << endl;
-	reading();
-	for (int i = 1; i < vec.size(); i++)
+	cout << "Sorting array by 'while':" << endl;//предупреждение 
+	reading();//вызов функции записи вектора
+	for (int i = 1; i < vec.size(); i++)//сортировка массива начинается со второго элемента
 	{
-		buf = vec[i];
-		j = i;
-		while (j > 0 and buf < vec[j - 1])
+		buf = vec[i];//помещаем в буферную ячейку значение числа, которое будем в дальнейшем анализировать
+		j = i;//внутренний цикл начинается с номера анализируемого элемента
+		while (j > 0 and buf < vec[j - 1])//цилк выполняется пока элемент не выходит за его пределы
+			//и он не больше, чем номер анализируемого элемента j и значение анализируемого элемента меньше, чем предыдущее
 		{
-			vec[j] = vec[j - 1];
-			j--;
+			vec[j] = vec[j - 1];//если условие все-таки выполняется то элементы меняются местами
+			j--;//уменьшение на единицу номера анализируемого элемента для того, чтобы произвести проверку элемента, расположенного ближе к началу
 		}
-		vec[j] = buf;
+		vec[j] = buf;//перчемещение элемента буферной ячейки в ячейку текущего элемента
 	}
-	printing();
+	printing();//вывод вектор на экран, используя подпрограмму
 }
 
-void sort_for(void)
+void sort_for(void)//инициализация функции печати/вывода элементов на экран
 {
-	cout << "Sorting array by 'for':" << endl;
-	reading();
-	for (int i = 1; i < vec.size(); i++)
+	cout << "Sorting array by 'for':" << endl;//предупреждение
+	reading();//вызов функции записи вектора
+	for (int i = 1; i < vec.size(); i++)//инициализация цикла, который выполнется, пока не закончатся все элементы массива
 	{
-		for(j = i, buf = vec[i]; j > 0 and buf < vec[j - 1]; j--)
+		for(j = i, buf = vec[i]; j > 0 and buf < vec[j - 1]; j--)//цилк выполняется пока элемент не выходит за его пределы
+			//и он не больше, чем номер анализируемого элемента j и значение анализируемого элемента меньше, чем предыдущее
 		{
-			vec[j] = vec[j - 1];
+			vec[j] = vec[j - 1];//если условие все-таки выполняется то элементы меняются местами
 		}
-		vec[j] = buf;
+		vec[j] = buf;//перчемещение элемента буферной ячейки в ячейку текущего элемента
 	}
-	printing();
+	printing();//вывод вектор на экран, используя подпрограмму
 }
 
 
-int main()
+int main()//начало основной программы
 {
-	setlocale(LC_ALL, "Russian");
-	cout << "This program sort array by 'Method vstavki'. You can enter the number of array till sign '0' or 'CTRL + Z'" << endl;
-	sort_for();
-	vec.clear();
-	sort_while();
+	setlocale(LC_ALL, "Russian");//установка локали, поодержка Русского языка
+	cout << "This program sort array by 'Method vstavki'. You can enter the number of array till sign '0' or 'CTRL + Z'" << endl;//предупреждение
+	
+	sort_for();//вызов подпрограммы сортировки вектора/массива с помощью цикла for
 
+	vec.clear();//очистка массива
 
-	return 0;
+	sort_while();//вызов подпрограммы сортировки вектора/массива с помощью цикла while
+
+	return 0;//завершение программы
 }

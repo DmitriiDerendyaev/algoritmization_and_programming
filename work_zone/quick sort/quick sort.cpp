@@ -1,6 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
-#define SIZE 20
+#include <iostream>//подключение необходимых библиотек
+
+using namespace std;//определение пространства имен
+
+#define n 5//определение идентификатора n = 5
 
 void qsort(int* arr, int left, int right)
 {
@@ -32,18 +34,21 @@ void qsort(int* arr, int left, int right)
 
 int main()
 {
-    int Arr[SIZE];
-
-    // Заполнение массива случайными числами
-    for (int i = 0; i < SIZE; i++) Arr[i] = rand() % 100;
+    int Arr[] = { 5, 7, 8, 4, 9 };
 
     // Вывод элементов массива до сортировки
-    for (int i = 0; i < SIZE; i++) printf("%3d ", Arr[i]); printf("\n");
+    for (int i = 0; i < n; i++)
+        cout << Arr[i] << ' ';
+    cout << endl << endl;
 
-    qsort(Arr, 0, SIZE - 1); // вызов функции сортировки
+    qsort(Arr, 0, n - 1); // вызов функции сортировки
 
     // Вывод элементов массива после сортировки
-    for (int i = 0; i < SIZE; i++) printf("%3d ", Arr[i]); printf("\n");
+    for (int i = 0; i < n; i++)
+        cout << Arr[i] << ' ';
+    cout << endl << endl;
 
-    getchar(); return 0;
+    system("pause");
+    
+    return 0;
 }

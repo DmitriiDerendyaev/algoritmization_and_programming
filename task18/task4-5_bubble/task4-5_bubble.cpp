@@ -1,9 +1,12 @@
 #include <iostream>
-#include <vector>
+#include <vector>	
 #include <ctime>
 #include <iomanip>
+#include <chrono>
 
 using namespace std;
+
+typedef std::chrono::high_resolution_clock Clock;
 
 int main()
 {
@@ -31,6 +34,8 @@ int main()
 
 	start = clock();
 
+	auto t1 = Clock::now();
+
 	i = 0;//обнуление переменных-параметров цикла while
 	j = 0;
 	while (i < q - 1)//запуск внешнего цикла while
@@ -50,6 +55,7 @@ int main()
 		j = 0;//обнуление параметра внутренного цикла
 		i++;//увеличение параметра цикла после исполнения программы
 	}
+	auto t2 = Clock::now();
 
 	duration = ((double)clock() - (double)start)/*/(double)CLOCKS_PER_SEC*/;//без "(double)CLOCKS_PER_SEC" в миллисекундах
 	cout << "Array after sort:" << endl;
@@ -57,9 +63,9 @@ int main()
 		cout << array2[i] << ' ';
 
 	cout << setprecision(5);
-	cout << endl << "Duration is: " << duration << endl;
-
-	system("pause");
+	cout << endl << "Duration(miliseconds) is: " << duration << endl;
+	cout << endl << endl << "Duretion(nanoseconds) is: " << std::chrono::duration_cast<std::chrono::nanoseconds>(t2 - t1).count() << endl;
+	//system("pause");
 
 	return 0;
 }

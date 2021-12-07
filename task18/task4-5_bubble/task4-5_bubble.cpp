@@ -64,7 +64,7 @@ int main()
 
 	cout << setprecision(5);
 	cout << endl << "Duration(miliseconds) is: " << duration << endl;
-	cout << endl << endl << "Duretion(nanoseconds) is: " << std::chrono::duration_cast<std::chrono::nanoseconds>(t2 - t1).count() << endl;
+	cout << endl << endl << "Duration(nanoseconds) is: " << std::chrono::duration_cast<std::chrono::nanoseconds>(t2 - t1).count() << endl;
 	//system("pause");
 
 	return 0;

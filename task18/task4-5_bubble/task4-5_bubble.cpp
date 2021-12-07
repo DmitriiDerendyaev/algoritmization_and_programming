@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <ctime>
+#include <iomanip>
 
 using namespace std;
 
@@ -8,6 +10,10 @@ int main()
 	vector<int> array2;
 	int q, peremen;
 	int i, j, buf1 = 0, buf2 = 0;//объ€вление всех переменных, включа€ парметр массивов, массивы, буферные €чейки пам€ти
+
+	clock_t start;
+	double duration;
+
 
 	cout << "Enter the amount of element:";
 
@@ -22,6 +28,8 @@ int main()
 	for (int i = 0; i < q; i++)
 		cout << array2[i] << ' ';
 	cout << endl << endl;
+
+	start = clock();
 
 	i = 0;//обнуление переменных-параметров цикла while
 	j = 0;
@@ -43,9 +51,13 @@ int main()
 		i++;//увеличение параметра цикла после исполнени€ программы
 	}
 
+	duration = ((double)clock() - (double)start)/*/(double)CLOCKS_PER_SEC*/;//без "(double)CLOCKS_PER_SEC" в миллисекундах
 	cout << "Array after sort:" << endl;
 	for (int i = 0; i < q; i++)
 		cout << array2[i] << ' ';
+
+	cout << setprecision(5);
+	cout << endl << "Duration is: " << duration << endl;
 
 	system("pause");
 

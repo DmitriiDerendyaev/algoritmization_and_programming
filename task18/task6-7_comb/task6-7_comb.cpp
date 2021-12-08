@@ -1,55 +1,36 @@
 #include <iostream>//подключение необходимых библиотек
 #include <vector>
 #include <algorithm>
+#include <chrono>
 
 using namespace std;//объявение стандартного пространства имен
+
+typedef std::chrono::high_resolution_clock Clock;
 
 vector<int> vec1;//объявление переменных
 int n;
 float k = 1.247;
+int q, peremen;
 
-
-void reading(void)//инициализации функции заполнения вектора(с клавиатуры)
+int main()//начало основной программы
 {
-	int el;//объявление промежуточной переменной, куда будет буферно записываться переменная для очередного элемента вектора
-	while (cin >> el)//начало цикла while и работа его до тех пор, пока вводятся значения с клавиатуры(Stop: Ctrl+Z) - НЕ РЕКОМЕНДУЕТСЯ
+
+	cout << "Enter the amount of element:";
+
+	cin >> q;
+	for (int k = 0; k < q; k++)
 	{
-		if (el != 0)//конец строки для опеределенной задачи по символу 0
-			vec1.push_back(el);//внесение очередного элемента в конец вектора
-		else
-			break;//если был нажат 0, то выход из подпрограммы записи вектора
+		peremen = rand() % q + 1;
+		vec1.push_back(peremen);
 	}
-}
 
-void printing(void)//инициализация функции печати/вывода элементов на экран
-{
-	for (int i = 0; i < vec1.size(); i++)//цикл вывода элементов на экран с индексом от начала до конца вектора(по размеру массива)
-	{
-		cout << vec1[i] << " ";//печать значения
-	}
-	cout << endl;//перенос строки
-}
+	cout << "Array before sort:" << endl;
+	for (int i = 0; i < q; i++)
+		cout << vec1[i] << ' ';
+	cout << endl << endl;
 
-void sort_for(void)//инициализация функции сортировки массива с помощью цикла for
-{
-	cout << "When finished typing, press CTRL + Z or enter 0 to contine next task:" << endl;//предупреждение
-	reading();//вызов функции записи вектора
-	n = vec1.size();//определение размера массива
-	for (int step = n - 1; step >= 1; step /= k)//инициализация цикла, который выполняется пока шаг больше 1, при уменьшении шага на коэфф К
-	{
-		for (int i = 0; i < n - step; i++)
-		{
-			if (vec1[i] > vec1[i + step])//если первый элемент больше элемента +step произвести обмен
-				swap(vec1[i], vec1[i + step]);//выполнение перемещения элементов вектора по индексам, заданным в условии
-		}
-	}
-	printing();//вывод вектор на экран, использую подпрограмму
-}
+	auto t1 = Clock::now();
 
-void sort_while(void)//инициализация функции сортировки массива с помощью цикла while
-{
-	cout << "When finished typing, press CTRL + Z:" << endl;//предупреждение
-	reading();//вызов функции записи вектора
 	n = vec1.size();//определение размера массива
 	int step = n - 1;//инициализация первого шага(крайняя точка массива)
 	while (step >= 1)//инициализация внешнего цикла while до момента, пока step больше 1
@@ -64,18 +45,16 @@ void sort_while(void)//инициализация функции сортировки массива с помощью цикла 
 		step /= k;//уменьшение шага
 
 	}
-	printing();//вывод вектор на экран, использую подпрограмму
-}
 
-int main()//начало основной программы
-{
-	cout << "Curren array sorted by for:" << endl;//предупреждение
-	sort_for();//вызов подпрограммы сортировки вектора/массива с помощью цикла for
+	auto t2 = Clock::now();
 
-	vec1.clear();
+	cout << "Array after sort:" << endl;
+	for (int i = 0; i < q; i++)
+		cout << vec1[i] << ' ';
 
-	cout << "Curren array sorted by while:" << endl;//предупреждение
-	sort_while(); // вызов подпрограммы сортировки вектора / массива с помощью цикла while
+	cout << endl << endl << "Duration(nanoseconds) is: " << std::chrono::duration_cast<std::chrono::nanoseconds>(t2 - t1).count() << endl;
 
-	return 0;// завершение программы
+	system("pause");
+
+	return 0;
 }

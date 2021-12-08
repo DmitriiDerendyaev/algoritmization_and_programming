@@ -9,7 +9,7 @@ typedef std::chrono::high_resolution_clock Clock;
 vector<int> vec;
 int q, peremen;
 
-void qsort(vector<int> vec, int left, int right)//объявление подфункции сортировки
+void qsort(vector<int>& vec, int left, int right)//объявление подфункции сортировки
 {
     int i = left, j = right;//объявление переменных крайнего левого положения и крайнего праввого положения
     int temp, pivot = vec[(left + right) / 2];//поиск центра(поиск опорного элемента)

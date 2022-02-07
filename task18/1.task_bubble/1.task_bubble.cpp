@@ -64,5 +64,8 @@ int main()
 	cout << endl << "Duration(miliseconds) is: " << duration << endl;
 	cout << endl << endl << "Duration(nanoseconds) is: " << std::chrono::duration_cast<std::chrono::nanoseconds>(t2 - t1).count() << endl;
 
+
+	system("pause");
+
 	return 0;
 }

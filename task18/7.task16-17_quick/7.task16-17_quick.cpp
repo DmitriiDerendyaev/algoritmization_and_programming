@@ -6,8 +6,8 @@ using namespace std;
 
 typedef std::chrono::high_resolution_clock Clock;
 
-vector<int> vec;
-int q, peremen;
+vector<int> vec = { 4,5,7,6,3,2,1,8,9 };
+int q=9, peremen;
 
 void qsort(vector<int>& vec, int left, int right)//объявление подфункции сортировки
 {
@@ -36,10 +36,10 @@ void qsort(vector<int>& vec, int left, int right)//объявление подфункции сортиро
 
     }
 
-    if (left < j)
-        qsort(vec, left, j);//если обнаружено нарушение порядка в одной из частей, вызывается функция сортировки определенной части
-    if (i < right)
-        qsort(vec, i, right);//если обнаружено нарушение порядка в одной из частей, вызывается функция сортировки определенной части
+    //if (left < j)
+    //    qsort(vec, left, j);//если обнаружено нарушение порядка в одной из частей, вызывается функция сортировки определенной части
+    //if (i < right)
+    //    qsort(vec, i, right);//если обнаружено нарушение порядка в одной из частей, вызывается функция сортировки определенной части
 }
 
 //-------------------------------------------------------------------
@@ -48,13 +48,13 @@ int main()//начало главной функции
 {
     cout << "Enter the amount of element:";
 
-    cin >> q;
+    /*cin >> q;
     for (int k = 0; k < q; k++)
     {
         peremen = rand() % q + 1;
         vec.push_back(peremen);
-    }
-
+    }*/
+    //vec[] = { 4,7,3,2,1 };
     cout << "Array before sort:" << endl;
     for (int i = 0; i < q; i++)
         cout << vec[i] << ' ';
